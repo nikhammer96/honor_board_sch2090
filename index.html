@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выдающиеся ученики — Школа № 2090 им. Героя Советского Союза Л.Х. Паперника</title>
+  <meta name="description" content="Галерея выдающихся учеников школы № 2090 имени Героя Советского Союза Л.Х. Паперника">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <img src="https://sch2090uv.mskobr.ru/attach_files/logo/Frame%202%20(2).png" alt="Логотип школы № 2090" class="logo-img">
+      <div class="logo-text">
+        <span class="logo-title">Школа № 2090</span>
+        <span class="logo-subtitle">им. Героя Советского Союза Л.Х. Паперника</span>
+      </div>
+    </a>
+    <nav class="main-nav" aria-label="Главное меню">
+      <a href="#about">О школе</a>
+      <a href="#classes">Классы</a>
+      <a href="#alumni">Выпускники</a>
+      <a href="admin.html" class="nav-admin">Админ-панель</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="container hero-content">
+    <span class="hero-badge">Гордость школы</span>
+    <h1 class="hero-title">Выдающиеся ученики<br>школы № 2090</h1>
+    <p class="hero-subtitle">имени Героя Советского Союза<br>Лазаря Хаимовича Паперника</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" id="statTotal">0</span>
+        <small>учеников</small>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">11</span>
+        <small>классов</small>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" id="statAlumni">0</span>
+        <small>выпускников</small>
+      </div>
+    </div>
+    <a href="#classes" class="hero-btn">Знакомиться с учениками</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-label">О школе</span>
+        <h2 class="section-title">Знания. Достижения. Гордость.</h2>
+        <p>Школа № 2090 носит имя Героя Советского Союза Лазаря Хаимовича Паперника — отважного снайпера и заместителя политрука, совершившего беспримерный подвиг в годы Великой Отечественной войны.</p>
+        <p>Лазарь Хаимович родился в 1918 году. В годы войны он служил снайпером 2-го мотострелкового полка Отдельной мотострелковой бригады особого назначения НКВД СССР (ОМСБОН). В ночь на 23 января 1942 года, выполняя боевое задание в тылу врага, группа из 27 лыжников под командованием старшего лейтенанта К.З. Лазнюка попала в окружение в деревне Хлуднево (ныне Думиничский район Калужской области).</p>
+        <p>Против превосходящих сил противника — около батальона, поддерживаемого танками и миномётами — красноармейцы приняли неравный бой. Оставшись последним в живых, Лазарь Паперник не сдался в плен: он подорвал себя и окруживших его врагов гранатой. За мужество и самопожертвование ему было посмертно присвоено звание Героя Советского Союза.</p>
+        <p>Сегодня мы собираем историю достижений наших учеников — победителей олимпиад, спортивных соревнований и творческих конкурсов. Каждый из них — лицо школы и продолжатель традиций отваги, целеустремленности и верности своему делу.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>Лазарь Хаимович Паперник</h3>
+        <p>1918 — 1942. Герой Советского Союза (посмертно), красноармеец, заместитель политрука. Снайпер ОМСБОН НКВД СССР, совершивший подвиг в деревне Хлуднево, подорвавший себя и врагов гранатой 23 января 1942 года.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="classes" id="classes">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Галерея</span>
+      <h2 class="section-title">Наши классы</h2>
+      <p class="section-desc">Выберите класс, чтобы познакомиться с выдающимися учениками</p>
+    </div>
+
+    <div class="class-nav" id="classNav">
+      <!-- Кнопки классов рендерятся JS -->
+    </div>
+
+    <div class="students-grid" id="studentsGrid">
+      <!-- Карточки учеников рендерятся JS -->
+    </div>
+
+    <div class="empty-state" id="emptyState" hidden>
+      <div class="empty-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+        </svg>
+      </div>
+      <h3>В этом классе пока нет учеников</h3>
+      <p>Загляните позже или посмотрите другие классы</p>
+    </div>
+  </div>
+</section>
+
+<section class="alumni" id="alumni">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Выпускники</span>
+      <h2 class="section-title">Наша гордость навсегда</h2>
+      <p class="section-desc">Выпускники школы, прославившие её своими достижениями</p>
+    </div>
+    <div class="students-grid" id="alumniGrid">
+      <!-- Выпускники -->
+    </div>
+    <div class="empty-state" id="alumniEmpty" hidden>
+      <p>Список выпускников скоро будет обновлён</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <img src="https://sch2090uv.mskobr.ru/attach_files/logo/Frame%202%20(2).png" alt="Логотип школы № 2090" class="logo-img">
+      <p>Школа № 2090 имени Героя Советского Союза Л.Х. Паперника</p>
+    </div>
+    <div class="footer-col">
+      <h4>Навигация</h4>
+      <a href="#about">О школе</a>
+      <a href="#classes">Классы</a>
+      <a href="#alumni">Выпускники</a>
+      <a href="admin.html">Админ-панель</a>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <p>г. Москва</p>
+      <p>sch2090uv.mskobr.ru</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Школа № 2090. Все права защищены.</p>
+  </div>
+</footer>
+
+<div class="modal" id="studentModal" aria-hidden="true">
+  <div class="modal-overlay" data-close></div>
+  <div class="modal-card">
+    <button class="modal-close" data-close aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
