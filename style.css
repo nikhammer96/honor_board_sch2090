@@ -1136,3 +1136,26 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; line-height: 1.2; font-w
   .logo-img { height: 36px; }
   .site-footer .logo-img { height: 44px; }
 }
+
+/* ============ БЛОК РЕЗЕРВНОГО КОПИРОВАНИЯ ============ */
+.backup-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.backup-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .backup-actions {
+    flex-direction: column;
+  }
+  .backup-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
