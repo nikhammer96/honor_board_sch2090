@@ -87,7 +87,31 @@
         </div>
       </div>
     </section>
-
+    
+    <section class="admin-section">
+      <div class="admin-section-head">
+        <div>
+          <span class="section-label">Данные</span>
+          <h2>Резервное копирование</h2>
+          <p class="section-desc">Сохраните данные учеников в файл для бэкапа или переноса на другое устройство</p>
+        </div>
+      </div>
+      <div class="settings-card">
+        <div class="backup-actions">
+          <button class="btn-primary" id="exportBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Экспортировать в файл
+          </button>
+          <button class="btn-secondary" id="importBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            Импортировать из файла
+          </button>
+          <input type="file" id="importFile" accept=".json" hidden>
+        </div>
+        <div class="alert" id="backupAlert" hidden></div>
+      </div>
+    </section>
+    
     <section class="admin-section">
       <div class="admin-section-head">
         <div>
