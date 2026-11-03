@@ -576,6 +576,106 @@ function closeModal(modal) {
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
+/* ====== ЭКСПОРТ / ИМПОРТ ДАННЫХ ====== */
+const exportBtn = document.getElementById('exportBtn');
+const importBtn = document.getElementById('importBtn');
+const importFile = document.getElementById('importFile');
+const backupAlert = document.getElementById('backupAlert');
+
+function showBackupAlert(msg, type = 'info') {
+  if (!backupAlert) return;
+  backupAlert.textContent = msg;
+  backupAlert.className = 'alert alert-' + (type === 'error' ? 'warning' : 'success');
+  backupAlert.hidden = false;
+  setTimeout(() => { backupAlert.hidden = true; }, 6000);
+}
+
+// Экспорт данных в JSON-файл
+exportBtn?.addEventListener('click', () => {
+  const data = {
+    version: 1,
+    exportDate: new Date().toISOString(),
+    school: "Школа № 2090 им. Героя Советского Союза Л.Х. Паперника",
+    students: getStudents(),
+    settings: getSettings()
+    // Внимание: пароль не экспортируем!
+  };
+  
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  
+  const dateStr = new Date().toISOString().slice(0, 10);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `school-2090-backup-${dateStr}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  
+  showToast('Файл резервной копии сохранён', 'success');
+  showBackupAlert(`Резервная копия от ${new Date().toLocaleString('ru-RU')} успешно создана. Сохраните файл в надёжное место.`, 'success');
+});
+
+// Кнопка "Импортировать" открывает диалог выбора файла
+importBtn?.addEventListener('click', () => {
+  importFile.click();
+});
+
+// Обработка выбранного файла
+importFile?.addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  
+  try {
+    const text = await file.text();
+    const data = JSON.parse(text);
+    
+    // Проверка структуры файла
+    if (!data.students || !Array.isArray(data.students)) {
+      throw new Error('Неверный формат файла');
+    }
+    
+    const currentCount = getStudents().length;
+    const newCount = data.students.length;
+    
+    let msg = `В файле найдено учеников: ${newCount}.\n`;
+    if (currentCount > 0) {
+      msg += `Сейчас в базе: ${currentCount}.\n\n`;
+      msg += `Выберите действие:\n`;
+      msg += `• OK — ЗАМЕНИТЬ все данные данными из файла (текущие будут удалены)\n`;
+      msg += `• Отмена — отказаться от импорта`;
+      
+      if (!confirm(msg)) {
+        importFile.value = '';
+        return;
+      }
+      // Полная замена
+      saveStudents(data.students);
+    } else {
+      // В базе пусто — просто добавляем
+      saveStudents(data.students);
+    }
+    
+    // Импортируем настройки, если они есть
+    if (data.settings) {
+      saveSettings(data.settings);
+    }
+    
+    renderDashboard();
+    showBackupAlert(`Импорт завершён! Загружено учеников: ${newCount}.`, 'success');
+    showToast('Данные импортированы', 'success');
+    
+  } catch (err) {
+    console.error('Import error:', err);
+    showBackupAlert('Ошибка импорта: файл повреждён или имеет неверный формат.', 'error');
+    showToast('Ошибка импорта файла', 'error');
+  }
+  
+  // Сбрасываем input, чтобы можно было выбрать тот же файл повторно
+  importFile.value = '';
+});
 document.querySelectorAll('[data-close]').forEach(el => {
   el.addEventListener('click', () => {
     closeModal(formModal);
