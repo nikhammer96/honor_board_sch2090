@@ -1,9 +1,9 @@
 /* ============ ПЕРЕМЕННЫЕ ============ */
 :root {
-  --primary: #1a4c8a;
-  --primary-dark: #0d2e54;
-  --primary-light: #2d6bb5;
-  --primary-soft: #e8f0fa;
+  --primary: #740001;        /* Бордовый (основной) */
+  --primary-dark: #4A0000;   /* Тёмно-бордовый */
+  --primary-light: #9A0808;  /* Светло-бордовый */
+  --primary-soft: #FAE8E8;   /* Очень светлый розово-бордовый для фонов */
   --accent: #e8b53d;
   --accent-dark: #c89525;
   --accent-soft: #fdf3dc;
